@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const routes = require('./server/routes');
 
@@ -13,6 +14,9 @@ app.use(logger('dev'));
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Use passport for authentication.
+app.use(passport.initialize());
 
 // Add our routes to the app.
 routes(app);
