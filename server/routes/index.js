@@ -1,6 +1,6 @@
 const middleware = require("../middleware/index");
 const UserController = require("../controllers/user");
-//const PhotoController = require("../controllers/photo");
+const ActivityController = require("../controllers/activity");
 //const CommentController = require("../controllers/comment");
 
 const authOptions = {
@@ -33,6 +33,7 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
+ app.post('/activity', ActivityController.create);
 
 
 };
