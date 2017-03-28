@@ -1,7 +1,7 @@
 const middleware = require("../middleware/index");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
-//const CommentController = require("../controllers/comment");
+const JobController = require("../controllers/job");
 
 const authOptions = {
   scope: ['public_profile', 'email'],
@@ -33,7 +33,9 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
- app.post('/activity', ActivityController.create);
+ app.post('/activities', ActivityController.create);
+
+ app.post('/jobs', JobController.create);
 
 
 };
