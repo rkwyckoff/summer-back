@@ -8,7 +8,8 @@ const appSecrets = require("../config/secrets");
     var salt = bcrypt.genSaltSync(10);
     var hashedPass = bcrypt.hashSync(req.body.password, salt);
     User.create({
-      username: req.body.username,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: hashedPass,
       salt: salt,
@@ -31,7 +32,7 @@ const appSecrets = require("../config/secrets");
         console.log("about to hash password ", user);
         var input = bcrypt.hashSync(req.body.password, user.salt);
         if (input === user.password) {
-          var token = jwt.encode({ id: user.id, username: user.username }, appSecrets.jwtSecret);
+          var token = jwt.encode({ id: user.id }, appSecrets.jwtSecret);
           console.log("About to encode token", token);
           var json = {
             user: user,
