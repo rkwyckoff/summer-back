@@ -1,10 +1,12 @@
 const middleware = require("../middleware/index");
-const passport = require('passport');
-const FacebookStrategy = require('passport-facebook').Strategy;
-
 const UserController = require("../controllers/user");
 //const PhotoController = require("../controllers/photo");
 //const CommentController = require("../controllers/comment");
+
+const authOptions = {
+  scope: ['public_profile', 'email'],
+  session: false
+};
 
 module.exports = (app) => {
   app.use(function(req, res, next) {
@@ -15,12 +17,12 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
-  app.get('/testing', middleware.authenticate('facebook', {
-    scope: ['public_profile', 'email']
-   }), (req, res) => {
-    console.log("inside testing route");
-    console.log(req.user);
-  });
+  app.get('/testing', middleware.authenticate('facebook', authOptions),
+    (req, res) => {
+      console.log("inside testing route");
+      console.log(req.user);
+      res.status(200).send("it worked");
+    })
 
 //Facebook redirects back to the application
   app.get('/auth/facebook/callback',

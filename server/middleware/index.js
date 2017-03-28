@@ -1,7 +1,6 @@
 // const jwt = require("jwt-simple");
 const secrets = require("../config/secrets");
 const User = require("../models").User;
-
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -12,61 +11,46 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'gender', 'birthday', 'link', 'email', 'photos']
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log("Got response from facebook");
-    console.log(accessToken, refreshToken, profile);
+    console.log(profile);
 
-    // User.findOrCreate(..., function(err, user) {
-    //   if (err) { return done(err); }
-    //   done(null, user);
+    // SELECT * FROM Users WHERE name = profile.displayName AND email = ...
+    // If no result, INSERT INTO Users (name, email) VALUES (profile.displayName, profile.email)
+    User.findOrCreate({
+      where: {
+        name: profile.displayName,
+        email: profile.emails[0].value,
+        // username: profile.username,
+        facebookId: profile.id
+      }
+      // photoUrl:
+      // profileUrl: profile.
+    })
+    .then(user => done(null, user))
+    .catch(error => done(error))
+  }));
+
+    // User.findOne({
+    //   'facebookId': profile.id
+    // }, function(err, user) {
+    //     if (err) {
+    //         return done(err);
+    //     }
+    //     //No user was found... so create a new user with values from Facebook (all the profile. stuff)
+    //     if (!user) {
+    //         User.create({
+    //             name: profile.displayName,
+    //             email: profile.emails[0].value,
+    //             username: profile.username,
+    //             provider: 'facebook',
+    //             //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
+    //             facebook: profile._json
+    //         }, function (err, data) {
+    //
+    //         })
+    //     } else {
+    //         //found user. Return
+    //         return done(err, user);
+    //     }
     // });
-  }
-));
 
-    //   console.log("Got response from facebook");
-    //  console.log(accessToken, refreshToken, profile);
-    // // //  done(null, false);
-
-
-
-module.exports = passport;
-
-// module.exports = {
-//   authenticate (req, res, next) {
-//     console.log("Request Token", req.headers['access-token']);
-//     // Look for a token.
-//     var token = req.headers['access-token'] || req.query.access_token;
-//
-//     // If they didn't provide a token, send them away.
-//     if (!token) {
-//       res.status(401).send({
-//         message: "Must be authenticated to use this route."
-//       });
-//     }
-//
-//     // Try to decode the token.
-//     try {
-//       var decoded = jwt.decode(token, appSecrets.jwtSecret);
-//       var userId = decoded.id;
-//
-//             // If decoding the token was successful,
-//       // look up the user from the token Id.
-//       User.findById(userId).then(user => {
-//         // If no matching user was found, send them away.
-//         if (!user) {
-//           res.status(401).send({ message: "Error during authentication." });
-//         }
-//
-//         // Otherwise, attach the user to the request object.
-//         req.user = user;
-//         //res.status(200).send({message: "Success", })
-//         next();
-//       });
-//
-//     } catch (e) {
-//       console.log(e);
-//       // Token was garbage. Tell 'em so.
-//       res.status(401).send({ message: "Invalid token." });
-//     }
-//
-//   }
-// };
+module.exports = passport
