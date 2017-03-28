@@ -16,5 +16,13 @@ console.log(req.body);
   })
     .then(activity => res.status(201).send(activity))
     .catch(error => res.status(400).send(error));
-}
+},
+listActivities (req, res) {
+      Activity.findAll({
+    })
+      .then(activities => res.status(200).send(activities))
+      .catch(error => res.status(400).send(error));
+  }
+
+
 }

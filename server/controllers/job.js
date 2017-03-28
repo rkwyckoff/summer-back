@@ -12,5 +12,13 @@ create (req, res) {
   })
     .then(job => res.status(201).send(job))
     .catch(error => res.status(400).send(error));
-}
+},
+listJobs (req, res) {
+      Job.findAll({
+    })
+      .then(jobs => res.status(200).send(jobs))
+      .catch(error => res.status(400).send(error));
+  }
+
+
 }

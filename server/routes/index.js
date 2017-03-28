@@ -37,5 +37,11 @@ module.exports = (app) => {
 
  app.post('/jobs', JobController.create);
 
+ app.get('/users', UserController.listUsers);
+
+ app.get('/activities', ActivityController.listActivities);
+
+ app.get('/jobs', JobController.listJobs);
+
 
 };
