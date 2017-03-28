@@ -19,7 +19,6 @@ passport.use(new FacebookStrategy({
       where: {
         name: profile.displayName,
         email: profile.emails[0].value,
-        // username: profile.username,
         facebookId: profile.id
       }
       // photoUrl:

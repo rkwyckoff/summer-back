@@ -29,6 +29,9 @@ module.exports = (app) => {
   middleware.authenticate('facebook', { successRedirect: 'http://localhost:8000/auth/facebook/callback',
                                       failureRedirect: '/login' }));
 
+  app.post('/users', UserController.register);
+                                    //Login user
+  app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
 
 

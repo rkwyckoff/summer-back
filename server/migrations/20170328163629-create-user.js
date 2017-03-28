@@ -9,14 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       username: {
         type: Sequelize.STRING
       },
       email: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       password: {
@@ -29,7 +27,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       facebookId: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
