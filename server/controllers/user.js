@@ -60,6 +60,9 @@ const appSecrets = require("../config/secrets");
     .catch(error => res.status(400).send(error));
   },
    addAdmin (req, res) {
+     if (!req.user.isAdmin) {
+       return res.status(403).send({message: "No can do"});
+     }
      User.update(req.body, {
        fields: ['isAdmin'],
        where: {

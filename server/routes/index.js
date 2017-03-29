@@ -20,7 +20,7 @@ module.exports = (app) => {
 
   app.get('/testing', passport.authenticate('facebook', authOptions),
     (req, res) => {
-      
+
       res.status(200).send("it worked");
     })
 
@@ -42,6 +42,10 @@ module.exports = (app) => {
  app.get('/activities', ActivityController.listActivities);
 
  app.get('/jobs', JobController.listJobs);
+
+ app.get('/users/:id', UserController.findUser);
+
+  app.put('/users/:id', UserController.addAdmin);
 
 
 };
