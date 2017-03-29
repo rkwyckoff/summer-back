@@ -32,6 +32,9 @@ module.exports = {
       admissionFee: {
         type: Sequelize.STRING
       },
+      isActivity: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

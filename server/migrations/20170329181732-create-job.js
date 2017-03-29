@@ -20,11 +20,14 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      contactName: {
+      contact: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
+      },
+      isJob: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
