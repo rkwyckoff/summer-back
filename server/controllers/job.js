@@ -7,7 +7,7 @@ create (req, res) {
     employer: req.body.employer,
     description: req.body.description,
     location: req.body.location,
-    contact: req.body.contactName,
+    contact: req.body.contact,
     email: req.body.email
   })
     .then(job => res.status(201).send(job))

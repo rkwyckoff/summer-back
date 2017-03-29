@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING,
     salt: DataTypes.STRING,
     profileUrl: DataTypes.STRING,
-    facebookId: DataTypes.STRING
+    facebookId: DataTypes.STRING,
+    isAdmin: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

@@ -1,0 +1,41 @@
+var passport = require('passport')
+  , FacebookStrategy = require('passport-facebook').Strategy;
+
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://www.example.com/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(...)
+    // findOrCreate({
+      // email: profile.email,
+      // gender: profile.gender,
+      // birthday: profile.bday
+    //})
+      .then(user => done(null, user))
+      .catch(err => done(err));
+  }
+));
+
+
+//////////////////
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+/Users/mac/Documents/IronYard/projects/summer-back/node_modules/passport-facebook
+
+////////////////////
+app.use(express.cookieParser());
+app.use(express.bodyParser());
+app.use(express.session({ secret: 'SECRET' }));
+app.use(passport.initialize());
+app.use(passport.session());

@@ -5,8 +5,9 @@ module.exports = function(sequelize, DataTypes) {
     employer: DataTypes.STRING,
     description: DataTypes.STRING,
     location: DataTypes.STRING,
-    contactName: DataTypes.STRING,
-    email: DataTypes.STRING
+    contact: DataTypes.STRING,
+    email: DataTypes.STRING,
+    isJob: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {
