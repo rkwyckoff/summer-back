@@ -29,7 +29,7 @@ const appSecrets = require("../config/secrets");
         if (!user) {
           return res.status(401).send({ message: "No such email or wrong password." });
         }
-        
+
         var input = bcrypt.hashSync(req.body.password, user.salt);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id }, appSecrets.jwtSecret);
@@ -52,6 +52,23 @@ const appSecrets = require("../config/secrets");
       })
         .then(users => res.status(200).send(users))
         .catch(error => res.status(400).send(error));
-    }
+    },
+
+    findUser (req, res) {
+    User.findById(req.params.id)
+    .then(users => res.status(201).send(users))
+    .catch(error => res.status(400).send(error));
+  },
+   addAdmin (req, res) {
+     User.update(req.body, {
+       fields: ['isAdmin'],
+       where: {
+         id: req.params.id
+       }
+     })
+     .then(users => res.status(201).send(users))
+     .catch(error => res.status(400).send(error));
+   }
+
 
 }

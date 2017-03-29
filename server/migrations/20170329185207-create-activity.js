@@ -33,7 +33,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       isActivity: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
