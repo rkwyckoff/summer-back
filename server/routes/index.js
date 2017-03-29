@@ -2,7 +2,7 @@ const middleware = require("../middleware/index");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
 const JobController = require("../controllers/job");
-
+const passport = require('passport');
 const authOptions = {
   scope: ['public_profile', 'email'],
   session: false
@@ -17,7 +17,7 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
-  app.get('/testing', middleware.authenticate('facebook', authOptions),
+  app.get('/testing', passport.authenticate('facebook', authOptions),
     (req, res) => {
       console.log("inside testing route");
       console.log(req.user);
