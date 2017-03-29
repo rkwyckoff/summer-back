@@ -28,7 +28,7 @@ module.exports = {
       },
       isJob: {
         type: Sequelize.BOOLEAN,
-        defaultValue: 0
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
