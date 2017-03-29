@@ -29,11 +29,11 @@ const appSecrets = require("../config/secrets");
         if (!user) {
           return res.status(401).send({ message: "No such email or wrong password." });
         }
-        console.log("about to hash password ", user);
+        
         var input = bcrypt.hashSync(req.body.password, user.salt);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id }, appSecrets.jwtSecret);
-          console.log("About to encode token", token);
+
           var json = {
             user: user,
             token: token

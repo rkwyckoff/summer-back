@@ -2,7 +2,6 @@ const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
 const User = require("../models").User;
 
-
 module.exports = {
   authenticate (req, res, next) {
     // console.log("Request Token", req.headers['access-token']);

@@ -1,7 +1,7 @@
 // const jwt = require("jwt-simple");
 const secrets = require("../config/secrets");
 const User = require("../models").User;
-//const passport = require('passport');
+const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(new FacebookStrategy({

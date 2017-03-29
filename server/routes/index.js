@@ -1,8 +1,9 @@
-const middleware = require("../middleware/index");
+const passport = require("../middleware/passportAuth");
+const standard = require("../middleware/standardAuth");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
 const JobController = require("../controllers/job");
-const passport = require('passport');
+
 const authOptions = {
   scope: ['public_profile', 'email'],
   session: false
@@ -19,14 +20,13 @@ module.exports = (app) => {
 
   app.get('/testing', passport.authenticate('facebook', authOptions),
     (req, res) => {
-      console.log("inside testing route");
-      console.log(req.user);
+      
       res.status(200).send("it worked");
     })
 
 //Facebook redirects back to the application
   app.get('/auth/facebook/callback',
-  middleware.authenticate('facebook', { successRedirect: 'http://localhost:8000/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: 'http://localhost:8000/auth/facebook/callback',
                                       failureRedirect: '/login' }));
 
   app.post('/users', UserController.register);
@@ -35,7 +35,7 @@ module.exports = (app) => {
 //  app.post('/users', UserController.register);
  app.post('/activities', ActivityController.create);
 
- app.post('/jobs', JobController.create);
+ app.post('/jobs', standard.authenticate, JobController.create);
 
  app.get('/users', UserController.listUsers);
 
