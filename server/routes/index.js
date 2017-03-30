@@ -2,10 +2,7 @@ const passport = require("../middleware/passportAuth");
 const standard = require("../middleware/standardAuth");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
-const JobController = require("../controllers/job");
-const CampController = require("../controllers/camp");
-const EducationalController = require("../controllers/educational");
-const VolunteerController = require("../controllers/volunteer");
+const CommentController = require("../controllers/comment");
 
 
 
@@ -45,29 +42,21 @@ module.exports = (app) => {
 //  app.post('/users', UserController.register);
  app.post('/activities', ActivityController.create);
 
- app.post('/jobs', standard.authenticate, JobController.create);
 
  app.get('/users', UserController.listUsers);
 
  app.get('/activities', ActivityController.listActivities);
 
- app.get('/jobs', JobController.listJobs);
 
  app.get('/users/:id', UserController.findUser);
 
   app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
-  app.get('/camps', CampController.listCamps);
 
-  app.get('/educational', EducationalController.listEducationals);
 
-  app.get('/volunteers', VolunteerController.listVolunteers);
 
-  app.post('/volunteers', VolunteerController.create);
 
-  app.post('/camps', CampController.create);
 
-  app.post('/educational', EducationalController.create);
 
 
 
