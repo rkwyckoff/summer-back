@@ -6,7 +6,7 @@ module.exports = {
   create (req, res) {
     console.log(req.user)
     Comment.create({
-      description: req.body.comment,
+      description: req.body.description,
       user_id: req.user.id,
       activity_id: req.params.id,
 

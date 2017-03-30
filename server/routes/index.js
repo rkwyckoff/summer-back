@@ -42,6 +42,8 @@ module.exports = (app) => {
 //  app.post('/users', UserController.register);
  app.post('/activities', standard.authenticate, ActivityController.create);
 
+ app.post('/comments', standard.authenticate, CommentController.create);
+
 
  app.get('/users', UserController.listUsers);
 
