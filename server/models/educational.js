@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Activity = sequelize.define('Activity', {
+  var Educational = sequelize.define('Educational', {
     date: DataTypes.STRING,
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     photoUrl: DataTypes.STRING,
     activityUrl: DataTypes.STRING,
     admissionFee: DataTypes.STRING,
-    isActivity: DataTypes.BOOLEAN
+    isEducational: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {
@@ -17,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Activity;
+  return Educational;
 };

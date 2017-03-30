@@ -3,6 +3,11 @@ const standard = require("../middleware/standardAuth");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
 const JobController = require("../controllers/job");
+const CampController = require("../controllers/camp");
+const EducationalController = require("../controllers/educational");
+const VolunteerController = require("../controllers/volunteer");
+
+
 
 const authOptions = {
   scope: ['public_profile', 'email'],
@@ -38,7 +43,7 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
- app.post('/activities', standard.authenticate, ActivityController.create);
+ app.post('/activities', ActivityController.create);
 
  app.post('/jobs', standard.authenticate, JobController.create);
 
@@ -51,6 +56,19 @@ module.exports = (app) => {
  app.get('/users/:id', UserController.findUser);
 
   app.put('/users/:id', standard.authenticate, UserController.addAdmin);
+
+  app.get('/camps', CampController.listCamps);
+
+  app.get('/educational', EducationalController.listEducationals);
+
+  app.get('/volunteers', VolunteerController.listVolunteers);
+
+  app.post('/volunteers', VolunteerController.create);
+
+  app.post('/camps', CampController.create);
+
+  app.post('/educational', EducationalController.create);
+
 
 
 };
