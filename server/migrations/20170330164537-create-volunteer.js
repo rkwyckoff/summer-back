@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Educationals', {
+    return queryInterface.createTable('Volunteers', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       location: {
         type: Sequelize.STRING
@@ -29,10 +29,7 @@ module.exports = {
       activityUrl: {
         type: Sequelize.STRING
       },
-      admissionFee: {
-        type: Sequelize.STRING
-      },
-      isEducational: {
+      isVolunteer: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
@@ -47,6 +44,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Educationals');
+    return queryInterface.dropTable('Volunteers');
   }
 };

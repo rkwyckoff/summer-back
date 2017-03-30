@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Educational = sequelize.define('Educational', {
     date: DataTypes.STRING,
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     location: DataTypes.STRING,
     contact: DataTypes.STRING,
     photoUrl: DataTypes.STRING,

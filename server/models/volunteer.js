@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Volunteer = sequelize.define('Volunteer', {
     date: DataTypes.STRING,
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     location: DataTypes.STRING,
     contact: DataTypes.STRING,
     photoUrl: DataTypes.STRING,

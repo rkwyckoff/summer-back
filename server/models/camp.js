@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Camp = sequelize.define('Camp', {
     date: DataTypes.STRING,
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     location: DataTypes.STRING,
     contact: DataTypes.STRING,
     photoUrl: DataTypes.STRING,

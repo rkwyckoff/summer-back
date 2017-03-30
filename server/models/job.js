@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Job = sequelize.define('Job', {
     title: DataTypes.STRING,
     employer: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     location: DataTypes.STRING,
     contact: DataTypes.STRING,
     email: DataTypes.STRING,

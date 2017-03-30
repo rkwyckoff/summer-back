@@ -1,21 +1,21 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Camps', {
+    return queryInterface.createTable('Jobs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      date: {
-        type: Sequelize.STRING
-      },
       title: {
         type: Sequelize.STRING
       },
-      description: {
+      employer: {
         type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.TEXT
       },
       location: {
         type: Sequelize.STRING
@@ -23,16 +23,10 @@ module.exports = {
       contact: {
         type: Sequelize.STRING
       },
-      photoUrl: {
+      email: {
         type: Sequelize.STRING
       },
-      activityUrl: {
-        type: Sequelize.STRING
-      },
-      admissionFee: {
-        type: Sequelize.STRING
-      },
-      isCamp: {
+      isJob: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
@@ -47,6 +41,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Camps');
+    return queryInterface.dropTable('Jobs');
   }
 };
