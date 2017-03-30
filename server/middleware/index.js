@@ -1,9 +1,17 @@
- const jwt = require("jwt-simple");
- const appSecrets = require("../config/secrets");
- const User = require("../models").User;
-//
-//
- module.exports = {
+const facebook = require("./passportAuth");
+const standard = require("./standardAuth");
+
+module.exports = {
+
+  authenticate (req, res, next) {
+    // did we get access-token or facebook-token?
+      if (req.headers['facebook-token']) {
+        return facebook.authenticate();
+      } else {
+        return standard.authenticate();
+      }
+  }
+}
 //   function (req, res, next) {
 //     // console.log("Request Token", req.headers['access-token']);
 //     // Look for a token.

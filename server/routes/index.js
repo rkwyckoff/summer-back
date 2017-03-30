@@ -18,16 +18,21 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
+
   app.get('/testing', passport.authenticate('facebook', authOptions),
     (req, res) => {
-
-      res.status(200).send("it worked");
+      // console.log('HELLOKURT');
+      // console.log('REQUEST: ', req);
+      // console.log('RESPONSE: ', res);
+      // console.log('RESPONSEURL: ', res.req.IncomingMessage);
+      res.status(200).send('it worked');
     })
 
+
 //Facebook redirects back to the application
-  app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: 'http://localhost:8000/auth/facebook/callback',
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost:8000/auth/facebook/callback',
                                       failureRedirect: '/login' }));
+                                      console.log('it worked again')
 
   app.post('/users', UserController.register);
                                     //Login user

@@ -9,24 +9,29 @@ passport.use(new FacebookStrategy({
     clientSecret: secrets.facebookSecret,
     callbackURL: "http://localhost:8000/testing",
     profileFields: ['id', 'displayName', 'gender', 'birthday', 'link', 'email', 'photos']
-  },
-  function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
-
-    // SELECT * FROM Users WHERE name = profile.displayName AND email = ...
-    // If no result, INSERT INTO Users (name, email) VALUES (profile.displayName, profile.email)
+},
+function(accessToken, refreshToken, profile, done) {
+  console.log("token-access", accessToken);
+  if (accessToken) {
+  // SELECT * FROM Users WHERE name = profile.displayName AND email = ...
+  // If no result, INSERT INTO Users (name, email) VALUES (profile.displayName, profile.email)
     User.findOrCreate({
       where: {
-        name: profile.displayName,
-        email: profile.emails[0].value,
-        facebookId: profile.id
+      name: profile.displayName,
+      email: profile.emails[0].value,
+      facebookId: profile.id
+      //accessToken: res.accessToken
       }
-      // photoUrl:
-      // profileUrl: profile.
+    // photoUrl:
+   // profileUrl: profile.
     })
     .then(user => done(null, user))
     .catch(error => done(error))
-  }));
+  }
+  else {User.register}
+
+//
+}));
 
 
 
