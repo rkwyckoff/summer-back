@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Activities', {
+    return queryInterface.createTable('Camps', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -32,9 +32,12 @@ module.exports = {
       admissionFee: {
         type: Sequelize.STRING
       },
-      isActivity: {
+      isCamp: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
+      },
+      user_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +50,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Activities');
+    return queryInterface.dropTable('Camps');
   }
 };

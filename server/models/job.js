@@ -7,10 +7,14 @@ module.exports = function(sequelize, DataTypes) {
     location: DataTypes.STRING,
     contact: DataTypes.STRING,
     email: DataTypes.STRING,
-    isJob: DataTypes.BOOLEAN
+    isJob: DataTypes.BOOLEAN,
+    user_id: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
+        Job.belongsTo(models.User, {
+          foreignKey: 'user_id'
+        })
         // associations can be defined here
       }
     }

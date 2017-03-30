@@ -9,10 +9,15 @@ module.exports = function(sequelize, DataTypes) {
     photoUrl: DataTypes.STRING,
     activityUrl: DataTypes.STRING,
     admissionFee: DataTypes.STRING,
-    isEducational: DataTypes.BOOLEAN
+    isEducational: DataTypes.BOOLEAN,
+    user_id: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
+        Educational.hasMany(models.Comment,{foreignKey: 'educational_id'} )
+        Educational.belongsTo(models.User, {
+          foreignKey: 'user_id'
+        })
         // associations can be defined here
       }
     }

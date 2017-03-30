@@ -34,8 +34,34 @@ passport.use(new FacebookStrategy({
 /Users/mac/Documents/IronYard/projects/summer-back/node_modules/passport-facebook
 
 ////////////////////
-app.use(express.cookieParser());
-app.use(express.bodyParser());
-app.use(express.session({ secret: 'SECRET' }));
-app.use(passport.initialize());
-app.use(passport.session());
+user model
+
+name: DataTypes.STRING,
+firstName: DataTypes.STRING,
+lastName: DataTypes.STRING,
+username: DataTypes.STRING,
+email: DataTypes.STRING,
+password: DataTypes.STRING,
+salt: DataTypes.STRING,
+profileUrl: DataTypes.STRING,
+facebookId: DataTypes.STRING
+
+job model
+
+title: DataTypes.STRING,
+employer: DataTypes.STRING,
+description: DataTypes.STRING,
+location: DataTypes.STRING,
+contactName: DataTypes.STRING,
+email: DataTypes.STRING
+
+activities
+
+date: DataTypes.STRING,
+title: DataTypes.STRING,
+description: DataTypes.STRING,
+location: DataTypes.STRING,
+contact: DataTypes.STRING,
+photoUrl: DataTypes.STRING,
+activityUrl: DataTypes.STRING,
+admissionFee: DataTypes.STRING
