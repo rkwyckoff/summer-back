@@ -59,7 +59,7 @@ module.exports = (app) => {
 
   app.get('/camps', CampController.listCamps);
 
-  app.get('/educationals', EducationalController.listEducationals);
+  app.get('/educational', EducationalController.listEducationals);
 
   app.get('/volunteers', VolunteerController.listVolunteers);
 
@@ -67,7 +67,7 @@ module.exports = (app) => {
 
   app.post('/camps', CampController.create);
 
-  app.post('/educationals', EducationalController.create);
+  app.post('/educational', EducationalController.create);
 
 
 

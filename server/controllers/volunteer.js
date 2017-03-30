@@ -19,9 +19,8 @@ console.log(req.body);
 },
 
 listVolunteers (req, res) {
-      Volunteer.findAll({
-    })
-      .then(volunteers => res.status(200).send(voluteers))
+      Volunteer.findAll()
+      .then(volunteers => res.status(200).send(volunteers))
       .catch(error => res.status(400).send(error));
   }
 }
