@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Educationals', {
+    return queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,24 +17,11 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      location: {
-        type: Sequelize.STRING
+      activity_id: {
+        type: Sequelize.INTEGER
       },
-      contact: {
-        type: Sequelize.STRING
-      },
-      photoUrl: {
-        type: Sequelize.STRING
-      },
-      activityUrl: {
-        type: Sequelize.STRING
-      },
-      admissionFee: {
-        type: Sequelize.STRING
-      },
-      isEducational: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+      user_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +34,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Educationals');
+    return queryInterface.dropTable('Comments');
   }
 };
