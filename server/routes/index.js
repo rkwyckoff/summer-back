@@ -40,7 +40,7 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
- app.post('/activities', ActivityController.create);
+ app.post('/activities', standard.authenticate, ActivityController.create);
 
 
  app.get('/users', UserController.listUsers);

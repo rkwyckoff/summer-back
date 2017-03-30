@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Activity = sequelize.define('Activity', {
-    type: DataTypes.STRING,
+    category: DataTypes.STRING,
     email: DataTypes.STRING,
     employer: DataTypes.STRING,
     date: DataTypes.STRING,

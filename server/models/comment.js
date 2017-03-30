@@ -8,13 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     user_id: DataTypes.INTEGER
   }, {
     classMethods: {
-      associate: function(models) {
-        Comment.belongsTo(models.User, {foreignKey: 'user_id'} )
-        // Photo.belongsTo(models.User, {
-        //   foreignKey: 'user_id'
-
+        associate: function(models) {
+          Comment.belongsTo(models.User, {foreignKey: 'user_id'} )
+        }
     }
-  }
-  });
-  return Comment;
-};
+    });
+    return Comment;
+  };

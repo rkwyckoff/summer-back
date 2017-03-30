@@ -13,12 +13,12 @@ module.exports = function(sequelize, DataTypes) {
     isAdmin: DataTypes.BOOLEAN
   }, {
     classMethods: {
-      associate: function(models) {
-          User.hasMany(models.Activity, {
-            foreignKey: 'user_id'
-          });
-        }
-    }
-  })
-    return User;
+    associate: function(models) {
+        User.hasMany(models.Activity, {
+          foreignKey: 'user_id'
+        });
+      }
+  }
+})
+  return User;
 };

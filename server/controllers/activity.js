@@ -4,6 +4,7 @@ module.exports = {
 create (req, res) {
 console.log(req.body);
   Activity.create({
+    type: req.body.type,
     date: req.body.date,
     title: req.body.title,
     description: req.body.description,
