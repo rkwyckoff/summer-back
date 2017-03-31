@@ -12,8 +12,8 @@ console.log(req.body);
     contact: req.body.contact,
     photoUrl: req.body.photoUrl,
     activityUrl: req.body.activityUrl,
-    admissionFee: req.body.admissionFee
-
+    admissionFee: req.body.admissionFee,
+    user_id: req.user.id
   })
     .then(activity => res.status(201).send(activity))
     .catch(error => res.status(400).send(error));
