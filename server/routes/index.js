@@ -40,13 +40,14 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
- app.post('/activities', ActivityController.create);
+ app.post('/activities', standard.authenticate, ActivityController.create);
 
  app.post('/comments', CommentController.create);
 
+
  app.post('/activities/:id/comments', CommentController.create )
 //List all comments for 1 photo
-
+app.get('/activities/:id', ActivityController.clickActivity);
 
  app.get('/users', UserController.listUsers);
 
@@ -62,6 +63,8 @@ module.exports = (app) => {
   app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
   app.post('/activities/:id/delete', ActivityController.deleteActivity);
+
+
 
 
 

@@ -1,4 +1,7 @@
 const Activity = require("../models").Activity
+const User = require("../models").User
+const Comment = require("../models").Comment
+
 
 module.exports = {
 create (req, res) {
@@ -24,6 +27,18 @@ listActivities (req, res) {
       .then(activities => res.status(200).send(activities))
       .catch(error => res.status(400).send(error));
   },
+  clickActivity (req, res) {
+  Activity.findById(req.params.id, {
+    include: [
+      {model: User, attributes: ['firstName']},
+      {model: Comment, include: {
+        model: User, attributes: ['firstName']
+     }}
+    ]
+  })
+  .then(activity => res.status(201).send(activity))
+  .catch(error => res.status(400).send(error));
+},
 
   deleteActivity (req, res) {
      Activity.destroy({
