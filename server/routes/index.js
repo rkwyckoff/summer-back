@@ -61,6 +61,9 @@ module.exports = (app) => {
 
   app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
+  app.post('/activities/:id/delete', ActivityController.deleteActivity);
+
+
 
 
 

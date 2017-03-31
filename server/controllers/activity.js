@@ -23,7 +23,18 @@ listActivities (req, res) {
     })
       .then(activities => res.status(200).send(activities))
       .catch(error => res.status(400).send(error));
-  }
+  },
+
+  deleteActivity (req, res) {
+     Activity.destroy({
+        where: {
+         id:req.params.id
+         }
+      })
+     .then(activity => res.status(200).send(activity))
+     .catch(error => res.status(400).send(error));
+   }
+
 
 
 }
