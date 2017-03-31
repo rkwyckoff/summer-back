@@ -8,7 +8,7 @@ module.exports = {
     Comment.create({
       description: req.body.description,
       user_id: req.user.id,
-      activity_id: req.params.id,
+      activity_id: req.params.id
 
 
     })
@@ -20,7 +20,7 @@ module.exports = {
   listComments (req, res) {
      Comment.findAll({
         where: {
-         photo_id:req.params.id,
+         activity_id:req.params.id,
        },
          include: {
            model: User, attributes: ['name']

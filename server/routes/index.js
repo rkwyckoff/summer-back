@@ -40,12 +40,19 @@ module.exports = (app) => {
                                     //Login user
   app.post('/login', UserController.login);
 //  app.post('/users', UserController.register);
- app.post('/activities', standard.authenticate, ActivityController.create);
+ app.post('/activities', ActivityController.create);
 
- app.post('/comments', standard.authenticate, CommentController.create);
+ app.post('/comments', CommentController.create);
+
+ app.post('/activities/:id/comments', CommentController.create )
+//List all comments for 1 photo
 
 
  app.get('/users', UserController.listUsers);
+
+ app.get('/comments', CommentController.listallComments);
+
+ app.get('/activities/:id/comments', CommentController.listComments);
 
  app.get('/activities', ActivityController.listActivities);
 

@@ -15,7 +15,7 @@ console.log(req.body);
     admissionFee: req.body.admissionFee,
     user_id: req.user.id
   })
-    .then(activity => res.status(201).send(activity))
+    .then(activities => res.status(201).send(activities))
     .catch(error => res.status(400).send(error));
 },
 listActivities (req, res) {
