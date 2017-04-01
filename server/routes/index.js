@@ -42,7 +42,7 @@ module.exports = (app) => {
 //  app.post('/users', UserController.register);
  app.post('/activities', standard.authenticate, ActivityController.create);
 
- app.post('/comments', standard.authenticate, CommentController.create);
+ //app.post('/comments', standard.authenticate, CommentController.create);
 
 
  app.post('/activities/:id/comments', standard.authenticate, CommentController.create )
@@ -50,6 +50,10 @@ module.exports = (app) => {
 app.get('/activities/:id', standard.authenticate, ActivityController.clickActivity);
 
  app.get('/users', UserController.listUsers);
+
+ app.get('/users/:id', UserController.findUser);
+
+
 
  app.get('/comments', CommentController.listallComments);
 
