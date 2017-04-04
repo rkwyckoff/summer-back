@@ -25,6 +25,14 @@ rsvpsByUser (req, res) {
      where: {
        user_id: req.params.id
      },
+     include: [{
+       model: Activity,
+       attributes: [
+         'title',
+         'photoUrl'
+       ]
+     }]
+
   })
    .then(guestlist => res.status(200).send(guestlist))
    .catch(error => res.status(400).send(error));
