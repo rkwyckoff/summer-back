@@ -13,7 +13,9 @@ module.exports = function(sequelize, DataTypes) {
     activityUrl: DataTypes.STRING,
     admissionFee: DataTypes.STRING,
     isActivity: DataTypes.BOOLEAN,
-    user_id: DataTypes.INTEGER
+    user_id: DataTypes.INTEGER,
+    commentnumber: DataTypes.INTEGER,
+    likesnumber: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
