@@ -20,7 +20,7 @@ Guestlist.findOrCreate({
   .catch(error => res.status(400).send(error))
 },
 
-listRsvp (req, res) {
+rsvpsByUser (req, res) {
    Guestlist.findAll({
       where: {
          user_id:req.params.id,
@@ -38,6 +38,19 @@ listRsvp (req, res) {
       })
      .then(guestlist => res.status(200).send(guestlist))
      .catch(error => res.status(400).send(error));
-   }
+   },
+
+  //  rsvpsPerUser (req, res) {
+  //   User.findById(req.params.id, {
+  //     include: [
+  //       {model: Activity, attributes: ['firstName', lastName, ]},
+  //       {model: Guestlist, include: {
+  //         model: User, attributes: ['username']
+  //      }}
+  //     ]
+  //   })
+  //   .then(photo => res.status(201).send(photo))
+  //   .catch(error => res.status(400).send(error));
+  // },
 
 }

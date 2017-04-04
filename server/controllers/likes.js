@@ -14,13 +14,9 @@ module.exports = {
         //comment_id: req.comment.id
 
       }
-    //  likesnumber: likesnumber++;
-    })
- //      .then(function(activity) {
- //       console.log("inside it")
- //   return activity.increment('likesnumber', {by: 1})
- // }).then(likes => res.status(201).send(likes))
 
+    })
+ 
     .spread((like, created) => {
       console.log('here it is', like)
       if (created) {

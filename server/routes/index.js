@@ -64,7 +64,10 @@ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivi
 
  app.get('/activities', ActivityController.listActivities);
 
- app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.listRsvp);
+ app.get('/users/:id/events', standard.authenticate, GuestlistController.rsvpsByUser);
+
+ //app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.rsvpsByUser);
+
 
  app.get('/activities/:id/likes', standard.authenticate, LikesController.listLikes);
 
