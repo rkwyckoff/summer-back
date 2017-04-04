@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Likes.belongsTo(models.Activity, {
+          foreignKey: 'activity_id'
+        })
         // add belongsTo(activity) here
       }
     }

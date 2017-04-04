@@ -1,4 +1,5 @@
 const User = require("../models").User;
+const Activity =require("../models").Activity;
  const bcrypt = require("bcryptjs");
  const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
@@ -55,7 +56,10 @@ const appSecrets = require("../config/secrets");
     },
 
     findUser (req, res) {
-    User.findById(req.params.id)
+    User.findById(req.params.id,{
+      where: {user_id: req.params.id},
+      include: {model: Activity}
+      })
     .then(users => res.status(201).send(users))
     .catch(error => res.status(400).send(error));
   },
@@ -71,7 +75,17 @@ const appSecrets = require("../config/secrets");
      })
      .then(users => res.status(201).send(users))
      .catch(error => res.status(400).send(error));
-   }
+   },
+
+   deleteUser (req, res) {
+      User.destroy({
+         where: {
+          id:req.params.id
+          }
+       })
+      .then(user => res.status(200).send(user))
+      .catch(error => res.status(400).send(error));
+    }
 
 
 }
