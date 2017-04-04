@@ -28,5 +28,16 @@ listRsvp (req, res) {
   })
    .then(guestlist => res.status(200).send(guestlist))
    .catch(error => res.status(400).send(error));
- }
+ },
+
+ deleteRsvp (req, res) {
+     Guestlist.destroy({
+        where: {
+         id:req.params.id
+         }
+      })
+     .then(guestlist => res.status(200).send(guestlist))
+     .catch(error => res.status(400).send(error));
+   }
+
 }

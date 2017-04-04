@@ -76,6 +76,8 @@ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivi
 
  app.post('/activities/:id/likes', standard.authenticate, LikesController.create);
 
+ app.delete('/guestlist/:id/', standard.authenticate, GuestlistController.deleteRsvp);
+
 
 
 
