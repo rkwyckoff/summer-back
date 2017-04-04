@@ -64,7 +64,9 @@ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivi
 
  app.get('/activities', ActivityController.listActivities);
 
- app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.create);
+ app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.listRsvp);
+
+ app.get('/activities/:id/likes', standard.authenticate, LikesController.listLikes);
 
  app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 

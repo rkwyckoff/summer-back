@@ -18,5 +18,15 @@ Guestlist.findOrCreate({
 })
   .then(guestlist => res.status(201).send(guestlist))
   .catch(error => res.status(400).send(error))
-  }
+},
+
+listRsvp (req, res) {
+   Guestlist.findAll({
+      where: {
+         user_id:req.params.id,
+      }
+  })
+   .then(guestlist => res.status(200).send(guestlist))
+   .catch(error => res.status(400).send(error));
+ }
 }
