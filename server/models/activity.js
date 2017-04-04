@@ -23,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         Activity.belongsTo(models.User, {
           foreignKey: 'user_id'
         })
+        Activity.belongsTo(models.Guestlist,{foreignKey: 'user_id'})
         // associations can be defined here
       }
     }

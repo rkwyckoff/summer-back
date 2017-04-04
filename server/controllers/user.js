@@ -3,6 +3,7 @@ const Activity =require("../models").Activity;
  const bcrypt = require("bcryptjs");
  const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
+const Guestlist = require("../models").GuestList
 
   module.exports = {
   register (req, res) {
@@ -86,6 +87,19 @@ const appSecrets = require("../config/secrets");
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error));
     }
+
+  //   rsvpsByUser (req, res) {
+  //   User.findById(req.params.id, {
+  //     include: [
+  //       {model: Activity, attributes: ['title']},
+  //       {model: Guestlist, where: {attending: true}
+  //      }
+  //     ]
+  //   })
+  //   .then(photo => res.status(201).send(photo))
+  //   .catch(error => res.status(400).send(error));
+  // },
+  //
 
 
 }

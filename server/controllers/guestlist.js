@@ -22,9 +22,9 @@ Guestlist.findOrCreate({
 
 rsvpsByUser (req, res) {
    Guestlist.findAll({
-      where: {
-         user_id:req.params.id,
-      }
+     where: {
+       user_id: req.params.id
+     },
   })
    .then(guestlist => res.status(200).send(guestlist))
    .catch(error => res.status(400).send(error));
@@ -38,19 +38,70 @@ rsvpsByUser (req, res) {
       })
      .then(guestlist => res.status(200).send(guestlist))
      .catch(error => res.status(400).send(error));
-   },
+   }
 
-  //  rsvpsPerUser (req, res) {
-  //   User.findById(req.params.id, {
-  //     include: [
-  //       {model: Activity, attributes: ['firstName', lastName, ]},
-  //       {model: Guestlist, include: {
-  //         model: User, attributes: ['username']
-  //      }}
-  //     ]
-  //   })
-  //   .then(photo => res.status(201).send(photo))
-  //   .catch(error => res.status(400).send(error));
-  // },
+ //   rsvpsByUser (req, res) {
+ //   User.findById(req.params.id, {
+ //     include: [
+ //       {model: Activity, attributes: ['title']},
+ //       {model: Guestlist, where: {attending: true}
+ //      }}
+ //     ]
+ //   })
+ //   .then(photo => res.status(201).send(photo))
+ //   .catch(error => res.status(400).send(error));
+ // },
+
+
+
+
+
+// rsvpsByUser (req, res) {
+//      Guestlist.findAll({
+//         where: {
+//          user_id:req.params.id
+//        },
+//
+//          include: {
+//            model: Activity
+//
+//         }
+//       })
+//      .then(guestlist => res.status(200).send(guestlist))
+//      .catch(error => res.status(400).send(error));
+//    }
+
+
+// rsvpsByUser (req, res) {
+//    Guestlist.findAll({
+//      where: {
+//        user_id: req.params.id
+//      },
+//   })
+//    .then(guestlist => res.status(200).send(guestlist))
+//    .catch(error => res.status(400).send(error));
+//  },
+// Project.findAll({
+//     include: [{
+//         model: Task,
+//         where: { state: Sequelize.col('project.state') }
+//     }]
+// })
+
+// rsvpsByUser (req, res) {
+// Guestlist.findAll({
+//           include: [
+//               { model: Activity,
+//                 as: 'activity'
+//               }
+//           ],
+//           where:    {
+//               user_id: req.params.id
+//           }
+//       })
+//       console.log('im about finished')
+//       .then(guestlist => res.status(200).send(guestlist))
+//       .catch(error => res.status(400).send(error));
+//     }
 
 }
