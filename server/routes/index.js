@@ -78,6 +78,8 @@ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivi
 
  app.delete('/guestlist/:id/', standard.authenticate, GuestlistController.deleteRsvp);
 
+ app.delete('/users/:id/', standard.authenticate, UserController.deleteUser);
+
 
 
 
