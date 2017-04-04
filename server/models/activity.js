@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        Activity.hasMany(models.Comment,{foreignKey: 'activity_id'} )
+        Activity.belongsTo(models.User, {
+          foreignKey: 'user_id'
+        })
         // associations can be defined here
       }
     }

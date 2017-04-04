@@ -1,6 +1,7 @@
 const Activity = require("../models").Activity
 const User = require("../models").User
 const Comment = require("../models").Comment
+const Guestlist = require("../models").Guestlist
 
 
 module.exports = {
@@ -37,7 +38,7 @@ listActivities (req, res) {
     ]
   })
   .then(activity => res.status(201).send(activity))
-  .catch(error => res.status(400).send(error));
+  .catch(error => console.log(error));
 },
 
   deleteActivity (req, res) {

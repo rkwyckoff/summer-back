@@ -3,6 +3,9 @@ const standard = require("../middleware/standardAuth");
 const UserController = require("../controllers/user");
 const ActivityController = require("../controllers/activity");
 const CommentController = require("../controllers/comment");
+const GuestlistController = require("../controllers/guestlist");
+const LikesController = require("../controllers/likes");
+
 
 
 
@@ -61,12 +64,16 @@ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivi
 
  app.get('/activities', ActivityController.listActivities);
 
+ app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.create);
 
- app.get('/users/:id', UserController.findUser);
+ app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
-  app.put('/users/:id', standard.authenticate, UserController.addAdmin);
+ app.post('/activities/:id/delete', ActivityController.deleteActivity);
 
-  app.post('/activities/:id/delete', ActivityController.deleteActivity);
+ app.post('/activities/:id/rsvp', standard.authenticate, GuestlistController.create);
+
+ app.post('/activities/:id/likes', standard.authenticate, LikesController.create);
+
 
 
 
