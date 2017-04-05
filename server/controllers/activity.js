@@ -49,8 +49,26 @@ listActivities (req, res) {
       })
      .then(activity => res.status(200).send(activity))
      .catch(error => res.status(400).send(error));
-   }
+   },
 
-
-
-}
+  editActivity (req, res) {
+   Activity.update(req.body, {
+     fields:
+          ['category',
+            'date',
+            'title',
+            'description',
+            'location',
+            'contact',
+            'photoUrl',
+            'activityUrl',
+            'admissionFee'
+          ],
+     where: {
+       id: req.params.id
+     }
+   })
+   .then(activity => res.status(201).send(activity))
+   .catch(error => res.status(400).send(error));
+ }
+ }

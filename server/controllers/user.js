@@ -88,6 +88,7 @@ const Guestlist = require("../models").GuestList
       .catch(error => res.status(400).send(error));
     }
 
+
   //   rsvpsByUser (req, res) {
   //   User.findById(req.params.id, {
   //     include: [

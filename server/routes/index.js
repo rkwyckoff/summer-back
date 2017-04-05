@@ -23,21 +23,21 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
+  app.get('/auth/facebook', passport.authenticate('facebook'))
+  // app.get('testing', passport.authenticate('facebook', authOptions),
+  //   (req, res) => {
+  //
+  //     res.status(200).send('it worked');
+  //   })
 
-  app.get('/testing', passport.authenticate('facebook', authOptions),
-    (req, res) => {
-      // console.log('HELLOKURT');
-      // console.log('REQUEST: ', req);
-      // console.log('RESPONSE: ', res);
-      // console.log('RESPONSEURL: ', res.req.IncomingMessage);
-      res.status(200).send('it worked');
-    })
-
-
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
+                                        failureRedirect: '/login' }));
 //Facebook redirects back to the application
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://rocky-crag-27614.herokuapp.com/auth/facebook/callback',
-                                      failureRedirect: '/login' }));
-                                      console.log('it worked again')
+  // app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
+  //                                     failureRedirect: '/login' }));
+  //                                     console.log('it worked again')
+
 
   app.post('/users', UserController.register);
                                     //Login user
@@ -72,6 +72,8 @@ module.exports = (app) => {
  app.get('/activities/:id/likes', standard.authenticate, LikesController.listLikes);
 
  app.put('/users/:id', standard.authenticate, UserController.addAdmin);
+
+ app.put('/activities/:id', standard.authenticate, ActivityController.editActivity);
 
  app.post('/activities/:id/delete', ActivityController.deleteActivity);
 
