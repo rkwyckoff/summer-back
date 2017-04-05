@@ -26,8 +26,10 @@ rsvpsByUser (req, res) {
        user_id: req.params.id
      },
      include: [{
+      // where: { activity_id: }
        model: Activity,
        attributes: [
+         'id',
          'title',
          'photoUrl'
        ]

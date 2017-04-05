@@ -7,8 +7,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-          Guestlist.hasMany(models.Activity, {
-            foreignKey: 'user_id'
+          Guestlist.belongsTo(models.Activity, {
+            foreignKey: 'activity_id'
           });
         }
     }

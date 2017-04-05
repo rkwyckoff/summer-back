@@ -12,12 +12,9 @@ module.exports = {
         user_id: req.user.id,
         activity_id: req.params.id
         //comment_id: req.comment.id
-
       }
-
     })
- 
-    .spread((like, created) => {
+     .spread((like, created) => {
       console.log('here it is', like)
       if (created) {
         like.getActivity().then(activity => activity.increment('likesnumber'))

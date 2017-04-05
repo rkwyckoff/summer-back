@@ -50,7 +50,7 @@ module.exports = (app) => {
 
  app.post('/activities/:id/comments', standard.authenticate, CommentController.create )
 //List all comments for 1 photo
-app.get('/activities/:id', standard.authenticate, ActivityController.clickActivity);
+ app.get('/activities/:id', standard.authenticate, ActivityController.clickActivity);
 
  app.get('/users', UserController.listUsers);
 
