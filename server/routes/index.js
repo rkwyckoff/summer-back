@@ -66,7 +66,7 @@ module.exports = (app) => {
 
  app.get('/users/:id/events', standard.authenticate, GuestlistController.rsvpsByUser);
 
- //app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.rsvpsByUser);
+ app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.rsvpsByEvent);
 
 
  app.get('/activities/:id/likes', standard.authenticate, LikesController.listLikes);
