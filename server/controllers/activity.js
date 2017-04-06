@@ -62,7 +62,8 @@ listActivities (req, res) {
             'contact',
             'photoUrl',
             'activityUrl',
-            'admissionFee'
+            'admissionFee',
+            'isActivity'
           ],
      where: {
        id: req.params.id
