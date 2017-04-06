@@ -65,6 +65,11 @@ module.exports = (app) => {
 
  app.get('/activities', ActivityController.listActivities);
 
+ app.get('/activities/all/featured', ActivityController.listFeatureEvents);
+
+ app.get('/activities/all/pending', ActivityController.listEventsFalse);
+
+
  app.get('/users/:id/events', standard.authenticate, GuestlistController.rsvpsByUser);
 
  app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.rsvpsByEvent);
@@ -75,6 +80,9 @@ module.exports = (app) => {
  app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
  app.put('/activities/:id', standard.authenticate, ActivityController.editActivity);
+
+// app.put('/activities/:id/approve', standard.authenticate, ActivityController.approveEvent);
+
 
  app.post('/activities/:id/delete', ActivityController.deleteActivity);
 
