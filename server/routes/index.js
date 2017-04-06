@@ -31,7 +31,7 @@ module.exports = (app) => {
   //   })
 
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
+    passport.authenticate('facebook', { successRedirect: "https://rocky-crag-27614.herokuapp.com/auth/facebook/callback",
                                         failureRedirect: '/login' }));
 //Facebook redirects back to the application
   // app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
