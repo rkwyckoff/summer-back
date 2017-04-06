@@ -23,7 +23,9 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
-  app.get('/auth/facebook', passport.authenticate('facebook'), { session: false })
+  app.get('/auth/facebook', passport.authenticate('facebook', { session: false }), (req, res) => {
+    res.status(200).send('it worked!');
+  })
   // app.get('testing', passport.authenticate('facebook', authOptions),
   //   (req, res) => {
   //
