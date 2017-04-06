@@ -21,7 +21,7 @@ function(accessToken, refreshToken, profile, done) {
       }
 
     })
-    .then(user => done(null, user))
+    .spread((user, created) => done(null, user))
     .catch(error => done(error))
   }
 

@@ -23,7 +23,7 @@ module.exports = (app) => {
 //Redirect user to Facebook
   // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
 
-  app.get('/auth/facebook', passport.authenticate('facebook'))
+  app.get('/auth/facebook', passport.authenticate('facebook'), { session: false })
   // app.get('testing', passport.authenticate('facebook', authOptions),
   //   (req, res) => {
   //
@@ -31,7 +31,8 @@ module.exports = (app) => {
   //   })
 
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { successRedirect: "https://rocky-crag-27614.herokuapp.com/auth/facebook/callback",
+    passport.authenticate('facebook', { session: false,
+                                        successRedirect: "https://rocky-crag-27614.herokuapp.com/auth/facebook/callback",
                                         failureRedirect: '/login' }));
 //Facebook redirects back to the application
   // app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
