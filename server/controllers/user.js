@@ -86,6 +86,11 @@ const Guestlist = require("../models").GuestList
        })
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error));
+    },
+
+    facebookLogin (req, res) {
+      var token = jwt.encode({ id: req.user.id }, appSecrets.jwtSecret);
+      res.redirect(`https://tiy-mariefilbey-summerbreakfront.surge.sh/fb/${token}`);
     }
 
 
