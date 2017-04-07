@@ -67,7 +67,9 @@ module.exports = (app) => {
 
  app.get('/activities/all/featured', ActivityController.listFeatureEvents);
 
- app.get('/activities/all/pending', ActivityController.listEventsFalse);
+ app.get('/activities/all/pending', ActivityController.listEventsPending);
+
+ app.get('/activities/all/live', ActivityController.listEventsLive);
 
 
  app.get('/users/:id/events', standard.authenticate, GuestlistController.rsvpsByUser);
@@ -93,6 +95,8 @@ module.exports = (app) => {
  app.delete('/guestlist/:id/', standard.authenticate, GuestlistController.deleteRsvp);
 
  app.delete('/users/:id/', standard.authenticate, UserController.deleteUser);
+
+ app.delete('/likes/:id', standard.authenticate, LikesController.deleteLikes);
 
 
 

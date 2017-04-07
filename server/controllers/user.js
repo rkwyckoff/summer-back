@@ -49,6 +49,12 @@ const Guestlist = require("../models").GuestList
       .catch(error => res.status(400).send(error));
   },
 
+  facebookLogin (req, res) {
+    var token = jwt.encode({ id: req.user.id }, appSecrets.jwtSecret);
+    res.redirect(`https://tiy-mariefilbey-summerbreakfront.surge.sh/fb/${token}`);
+  },
+
+
   listUsers (req, res) {
         User.findAll({
       })
@@ -88,10 +94,6 @@ const Guestlist = require("../models").GuestList
       .catch(error => res.status(400).send(error));
     },
 
-    facebookLogin (req, res) {
-      var token = jwt.encode({ id: req.user.id }, appSecrets.jwtSecret);
-      res.redirect(`https://tiy-mariefilbey-summerbreakfront.surge.sh/fb/${token}`);
-    }
 
 
   //   rsvpsByUser (req, res) {

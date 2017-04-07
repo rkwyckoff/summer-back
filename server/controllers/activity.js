@@ -73,17 +73,17 @@ listActivities (req, res) {
    .catch(error => res.status(400).send(error));
  },
 
- listFeatureEvents (req, res) {
-       Activity.findAll({
-         where: {
-           likesnumber: {
-             $gt: 0               // id > 3
-           }
-         }
-      })
-      .then(activity => res.status(201).send(activity))
-      .catch(error => res.status(400).send(error));
-  },
+ // listFeatureEvents (req, res) {
+ //       Activity.findAll({
+ //         where: {
+ //           likesnumber: {
+ //             $gt: 0               // id > 3
+ //           }
+ //         }
+ //      })
+ //      .then(activity => res.status(201).send(activity))
+ //      .catch(error => res.status(400).send(error));
+ //  },
 
   approvedEvent (req, res) {
    //  if (!req.user.isAdmin) {
@@ -99,7 +99,7 @@ listActivities (req, res) {
     .catch(error => res.status(400).send(error));
   },
 
-  listEventsFalse (req, res) {
+  listEventsPending (req, res) {
         Activity.findAll({
           where: {
             isActivity: false
@@ -108,5 +108,30 @@ listActivities (req, res) {
        .then(activity => res.status(201).send(activity))
        .catch(error => res.status(400).send(error));
 
+   },
+
+   listEventsLive (req, res) {
+         Activity.findAll({
+           where: {
+             isActivity: true
+           }
+        })
+        .then(activity => res.status(201).send(activity))
+        .catch(error => res.status(400).send(error));
+
+    },
+
+
+
+
+   listFeatureEvents (req, res) {
+      Activity.findAll({
+        where: {
+          order: 'likesnumber DESC',
+          limit: 10
+        }
+     })
+     .then(activity => res.status(201).send(activity))
+     .catch(error => res.status(400).send(error));
    }
 }

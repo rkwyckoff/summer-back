@@ -32,7 +32,18 @@ module.exports = {
     })
      .then(likes => res.status(200).send(likes))
      .catch(error => res.status(400).send(error));
-  }
+  },
+
+  deleteLikes (req, res) {
+     Likes.destroy({
+        where: {
+         id:req.params.id
+         }
+      })
+     .then(likes => res.status(200).send(likes))
+     .catch(error => res.status(400).send(error));
+   },
+
 
 
 }
