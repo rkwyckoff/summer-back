@@ -65,7 +65,7 @@ module.exports = (app) => {
 
  app.get('/activities', ActivityController.listActivities);
 
- app.get('/activities/all/featured', ActivityController.listFeatureEvents);
+ app.get('/activities/all/feature', ActivityController.listFeatureEvents);
 
  app.get('/activities/all/pending', ActivityController.listEventsPending);
 
