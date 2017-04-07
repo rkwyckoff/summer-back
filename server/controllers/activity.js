@@ -47,8 +47,9 @@ listActivities (req, res) {
          id:req.params.id
          }
       })
-     .then(activity => res.status(200).send(activity))
+     .then(activity => res.sendStatus(200).send(activity))
      .catch(error => res.status(400).send(error));
+
    },
 
   editActivity (req, res) {
@@ -73,19 +74,7 @@ listActivities (req, res) {
    .catch(error => res.status(400).send(error));
  },
 
- // listFeatureEvents (req, res) {
- //       Activity.findAll({
- //         where: {
- //           likesnumber: {
- //             $gt: 0               // id > 3
- //           }
- //         }
- //      })
- //      .then(activity => res.status(201).send(activity))
- //      .catch(error => res.status(400).send(error));
- //  },
-
-  approveEvent (req, res) {
+   approveEvent (req, res) {
    //  if (!req.user.isAdmin) {
    //    return res.status(403).send({message: "No can do"});
    //  }
@@ -130,31 +119,3 @@ listActivities (req, res) {
      .catch(error => res.status(400).send(error));
    }
 }
-
-// order: [
-//    // Will escape username and validate DESC against a list of valid direction parameters
-//    ['username', 'DESC'],
-
-  //  listFeatureEvents (req, res) {
-  //     Activity.findAll({
-  //       where: {
-  //         order: 'likesnumber DESC'
-  //       //  limit: 10
-  //       }
-  //    })
-  //    .then(activity => res.status(201).send(activity))
-  //    .catch(error => res.status(400).send(error));
-  //  }
-
-  // order: 'username DESC'
-  //
-  // listFeatureEvents (req, res) {
-  //    Activity.findAll({
-  //      order: [
-  //        [order: 'likesnumber DESC']
-  //      //  limit: 10
-  //      [
-  //   })
-  //   .then(activity => res.status(201).send(activity))
-  //   .catch(error => res.status(400).send(error));
-  // }

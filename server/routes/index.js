@@ -86,7 +86,7 @@ module.exports = (app) => {
  //app.put('/activities/:id/approve', standard.authenticate, ActivityController.approveEvent);
 
 
- app.delete('/activities/:id', ActivityController.deleteActivity);
+ app.delete('/activities/:id', standard.authenticate, ActivityController.deleteActivity);
 
  app.post('/activities/:id/rsvp', standard.authenticate, GuestlistController.create);
 
