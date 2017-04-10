@@ -18,8 +18,8 @@ console.log(req.body);
     activityUrl: req.body.activityUrl,
     admissionFee: req.body.admissionFee,
     user_id: req.user.id,
-    employer: req.body.id,
-    email: req.body.id,
+    employer: req.body.employer,
+    email: req.body.email
 
   })
     .then(activities => res.status(201).send(activities))
