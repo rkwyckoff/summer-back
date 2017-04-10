@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
           Guestlist.belongsTo(models.Activity, {
             foreignKey: 'activity_id'
           });
+          Guestlist.belongsTo(models.User, {
+            foreignKey: 'user_id'
+          });
         }
     }
   });

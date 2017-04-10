@@ -23,7 +23,10 @@ module.exports = function(sequelize, DataTypes) {
         Activity.belongsTo(models.User, {
           foreignKey: 'user_id'
         })
-        Activity.belongsTo(models.Guestlist,{foreignKey: 'user_id'})
+        Activity.hasMany(models.Guestlist, {
+          foreignKey: 'activity_id'
+        })
+//        Activity.belongsTo(models.Guestlist,{foreignKey: 'user_id'})
         // associations can be defined here
       }
     }
