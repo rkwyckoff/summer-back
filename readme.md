@@ -36,7 +36,7 @@ GET /comments
 GET /activities/:id/comments
 (List all Comments per Activity ID)
 
- GET /users/:id/events
+GET /users/:id/events
 (List all RSVP’d Activities per User ID)
 
 GET /activities/:id/rsvp
@@ -54,7 +54,7 @@ GET /activities/all/pending
 GET /activities/all/live
 (List all Live Activities)
 
- PUT /users/:id
+PUT /users/:id
 (Update User per ID)
 
 PUT /activities/:id

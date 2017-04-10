@@ -17,7 +17,10 @@ console.log(req.body);
     photoUrl: req.body.photoUrl,
     activityUrl: req.body.activityUrl,
     admissionFee: req.body.admissionFee,
-    user_id: req.user.id
+    user_id: req.user.id,
+    employer: req.body.id,
+    email: req.body.id,
+
   })
     .then(activities => res.status(201).send(activities))
     .catch(error => res.status(400).send(error));
@@ -64,7 +67,9 @@ listActivities (req, res) {
             'photoUrl',
             'activityUrl',
             'admissionFee',
-            'isActivity'
+            'isActivity',
+            'email',
+            'employer'
           ],
      where: {
        id: req.params.id
