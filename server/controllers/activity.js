@@ -108,7 +108,17 @@ listActivities (req, res) {
          Activity.findAll({
            where: {
              isActivity: true
-           }
+           },
+           include: [{
+             model: Guestlist,
+             attributes: [
+               'user_id',
+               'attending',
+               'activity_id'
+             ]
+           }]
+
+
         })
         .then(activity => res.status(201).send(activity))
         .catch(error => res.status(400).send(error));

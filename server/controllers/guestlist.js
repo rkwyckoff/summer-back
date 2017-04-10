@@ -46,17 +46,8 @@ rsvpsByUser (req, res) {
       where: {
         activity_id: req.params.id
         // attending: true
-      }
-      // include: [{
-      //  // where: { activity_id: }
-      //   model: Activity
-      //   // attributes: [
-      //   //   'id',
-      //   //   'title',
-      //   //   'photoUrl'
-      //   // ]
-      // }]
-
+      },
+    
    })
     .then(guestlist => res.status(200).send(guestlist))
     .catch(error => res.status(400).send(error));
