@@ -78,6 +78,9 @@ GET /jobs
 GET /rsvps
 (List all RSVP'd events)
 
+GET /me
+(Get user profile from Facebook)
+
 PUT /users/:id
 (Update User per ID)
 

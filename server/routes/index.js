@@ -22,36 +22,24 @@ module.exports = (app) => {
     next();
   });
 //Redirect user to Facebook
-  // app.get('/auth/facebook', middleware.authenticate('facebook'), UserController.signup);
-
+  
   app.get('/auth/facebook', passport.authenticate('facebook', authOptions));
-  // app.get('testing', passport.authenticate('facebook', authOptions),
-  //   (req, res) => {
-  //
-  //     res.status(200).send('it worked');
-  //   })
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { session: false,
                                         failureRedirect: 'https://tiy-mariefilbey-summerbreakfront.surge.sh/#!/users' }),
     UserController.facebookLogin);
 //Facebook redirects back to the application
-  // app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',
-  //                                     failureRedirect: '/login' }));
-  //                                     console.log('it worked again')
 
 
   app.post('/users', UserController.register);
                                     //Login user
   app.post('/login', UserController.login);
-//  app.post('/users', UserController.register);
+
  app.post('/activities', standard.authenticate, ActivityController.create);
 
- //app.post('/comments', standard.authenticate, CommentController.create);
-
-
  app.post('/activities/:id/comments', standard.authenticate, CommentController.create )
-//List all comments for 1 photo
+
  app.get('/activities/:id', standard.authenticate, ActivityController.clickActivity);
 
  app.get('/users', UserController.listUsers);
@@ -74,20 +62,15 @@ module.exports = (app) => {
 
  app.get('/activities/all/live', ActivityController.listEventsLive);
 
-
  app.get('/users/:id/events', standard.authenticate, GuestlistController.rsvpsByUser);
 
  app.get('/activities/:id/rsvp', standard.authenticate, GuestlistController.rsvpsByEvent);
-
 
  app.get('/activities/:id/likes', standard.authenticate, LikesController.listLikes);
 
  app.put('/users/:id', standard.authenticate, UserController.addAdmin);
 
  app.put('/activities/:id', standard.authenticate, ActivityController.editActivity);
-
- //app.put('/activities/:id/approve', standard.authenticate, ActivityController.approveEvent);
-
 
  app.delete('/activities/:id', standard.authenticate, ActivityController.deleteActivity);
 
@@ -102,7 +85,6 @@ module.exports = (app) => {
  app.delete('/likes/:id', standard.authenticate, LikesController.deleteLikes);
 
  app.get('/me', standard.authenticate, UserController.getProfile);
-
 
 
 };
