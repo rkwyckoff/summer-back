@@ -98,19 +98,4 @@ const Guestlist = require("../models").GuestList
       res.status(200).send(req.user)
     }
 
-
-  //   rsvpsByUser (req, res) {
-  //   User.findById(req.params.id, {
-  //     include: [
-  //       {model: Activity, attributes: ['title']},
-  //       {model: Guestlist, where: {attending: true}
-  //      }
-  //     ]
-  //   })
-  //   .then(photo => res.status(201).send(photo))
-  //   .catch(error => res.status(400).send(error));
-  // },
-  //
-
-
 }
