@@ -24,20 +24,17 @@ POST /activities/:id/likes
 GET /users
 (List all Users)
 
+GET /users/:id/events
+(List all RSVP’d Activities per User ID)
+
 GET /activities
 (List all Activities)
 
 GET /activities/:id
 (List Activity by Activity ID)
 
-GET /comments
-(List all Comments)
-
 GET /activities/:id/comments
 (List all Comments per Activity ID)
-
-GET /users/:id/events
-(List all RSVP’d Activities per User ID)
 
 GET /activities/:id/rsvp
 (List all RSVPs per Activity ID)
@@ -53,6 +50,15 @@ GET /activities/all/pending
 
 GET /activities/all/live
 (List all Live Activities)
+
+GET /comments
+(List all Comments)
+
+GET /jobs
+(List all Jobs)
+
+GET /rsvps
+(List all RSVP'd events)
 
 PUT /users/:id
 (Update User per ID)
