@@ -33,7 +33,7 @@ module.exports = (app) => {
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { session: false,
-                                        failureRedirect: '/' }),
+                                        failureRedirect: 'https://tiy-mariefilbey-summerbreakfront.surge.sh/#!/users' }),
     UserController.facebookLogin);
 //Facebook redirects back to the application
   // app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: 'http://localhost8000/auth/facebook/callback',

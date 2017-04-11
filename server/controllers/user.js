@@ -51,7 +51,7 @@ const Guestlist = require("../models").GuestList
 
   facebookLogin (req, res) {
     var token = jwt.encode({ id: req.user.id }, appSecrets.jwtSecret);
-    res.redirect(`https://tiy-mariefilbey-summerbreakfront.surge.sh/fb/${token}`);
+    res.redirect(`https://tiy-mariefilbey-summerbreakfront.surge.sh/#!/fb/${token}`);
   },
 
 
