@@ -101,15 +101,7 @@ module.exports = (app) => {
 
  app.delete('/likes/:id', standard.authenticate, LikesController.deleteLikes);
 
-
-
-
-
-
-
-
-
-
+ app.get('/me', standard.authenticate, UserController.getProfile);
 
 
 

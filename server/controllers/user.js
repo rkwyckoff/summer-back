@@ -94,6 +94,9 @@ const Guestlist = require("../models").GuestList
       .catch(error => res.status(400).send(error));
     },
 
+    getProfile (req, res) {
+      res.status(200).send(req.user)
+    }
 
 
   //   rsvpsByUser (req, res) {
