@@ -13,6 +13,7 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
   console.log("token-access", accessToken);
+  console.log(profile);
 
     User.findOrCreate({
       where: {
