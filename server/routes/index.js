@@ -58,7 +58,9 @@ module.exports = (app) => {
 
  app.get('/users/:id', UserController.findUser);
 
+ app.get('/rsvps', GuestlistController.totalRsvps);
 
+ app.get('/jobs', ActivityController.listJobs);
 
  app.get('/comments', CommentController.listallComments);
 

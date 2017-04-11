@@ -132,5 +132,16 @@ listActivities (req, res) {
      })
      .then(activity => res.status(201).send(activity))
      .catch(error => res.status(400).send(error));
-   }
+   },
+
+   listJobs (req, res) {
+         Activity.findAll({
+           where: {
+             category: "jobs"
+           }
+        })
+        .then(activity => res.status(201).send(activity))
+        .catch(error => res.status(400).send(error));
+
+    }
 }

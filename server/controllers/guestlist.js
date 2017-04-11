@@ -47,7 +47,7 @@ rsvpsByUser (req, res) {
         activity_id: req.params.id
         // attending: true
       },
-    
+
    })
     .then(guestlist => res.status(200).send(guestlist))
     .catch(error => res.status(400).send(error));
@@ -61,7 +61,16 @@ rsvpsByUser (req, res) {
       })
      .then(guestlist => res.status(200).send(guestlist))
      .catch(error => res.status(400).send(error));
-   }
+   },
+
+   totalRsvps (req, res) {
+      Guestlist.findAll({
+        
+     })
+      .then(guestlist => res.status(200).send(guestlist))
+      .catch(error => res.status(400).send(error));
+    },
+
 
  //   rsvpsByUser (req, res) {
  //   User.findById(req.params.id, {
