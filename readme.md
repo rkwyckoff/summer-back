@@ -12,9 +12,25 @@ By clicking on the title of any event, one is taken to a detail page of the even
 
 Future features would be further Facebook integration, live calendar of events, and GoogleMaps API integration.   
 
-Technically, the front end was developed using AngularJS and UI Router, and user information was stored securely using Angular Cookies.
+Technically, the front end was developed using AngularJS and UI Router, CSS
 
-The back end server used Node JS, Express, and PostGres database.  
+Skills practiced
+
+Created different states on the page using $rootscope
+Used Angular scroll to navigate easily between sections
+Communicated to the back end through HTTP requests to match back end routes.
+Used Angular to loop through data on the back end to dsplay information dynamically.
+Stored user information securely using Angular Cookies.
+Created Facebook login tie-in to back end
+
+The back end server used Node.js, Sequelize, Express, SQL3Lite and PostGres databases.  
+
+Skills practiced
+
+Used Sequelize to write migrations, models, tables, and associations.
+Created specific logic in controllers to map specific routes to access data tables
+Used bcrypt and jwt-simple to encrypt my users passwords and create a salt.  Created token to allow specific route access.
+Installed Passport.io library to set up Facebook strategy and created routes to redirect to Facebook and back to our site in order to log in
 
 The server routes for Summer Break:
 
