@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         associate: function(models) {
           Comment.belongsTo(models.User, {foreignKey: 'user_id'} )
         }
-    }
+      }
     });
     return Comment;
   };

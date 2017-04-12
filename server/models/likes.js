@@ -11,7 +11,6 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'activity_id',
           as: "Activity"
         })
-        // add belongsTo(activity) here
       }
     }
   });
